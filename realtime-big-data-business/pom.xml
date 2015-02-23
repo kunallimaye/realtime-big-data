@@ -59,18 +59,7 @@
 
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-ejb-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<ejbVersion>3.1</ejbVersion>
-					<jarName>${project.artifactId}</jarName>
-					<generateClient>true</generateClient>
-				</configuration>
-			</plugin>
-		</plugins>
+		<finalName>${project.artifactId}</finalName>
 	</build>
 
 </project>
