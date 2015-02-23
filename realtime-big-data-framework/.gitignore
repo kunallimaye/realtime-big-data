@@ -1,1 +1,10 @@
-/target/
+.project
+.settings
+.classpath
+./target
+realtime-big-data-application-ear/.project
+realtime-big-data-application-ear/.settings
+realtime-big-data-application-ear/target
+realtime-big-data-framework/.settings
+realtime-big-data-framework/.project
+realtime-big-data-framework/target
