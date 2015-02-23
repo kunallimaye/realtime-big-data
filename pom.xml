@@ -8,7 +8,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>realtime-big-data-application-ear</module>
 		<module>realtime-big-data-framework</module>
 		<module>realtime-big-data-business</module>
 		<module>realtime-big-data-common</module>
