@@ -1,0 +1,63 @@
+<infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:infinispan:config:6.0 http://www.infinispan.org/schemas/infinispan-config-6.1.xsd"
+	xmlns="urn:infinispan:config:6.1">
+
+	<global>
+		<globalJmxStatistics enabled="true"
+			allowDuplicateDomains="true" cacheManagerName="framework-Manager" />
+
+		<transport clusterName="framework" nodeName="${jboss.node.name:local-node}"
+			rackId="${jboss.jgroups.transport.rack:r1}" machineId="${jboss.jgroups.transport.machine:m1}">
+			<properties>
+				<property name="configurationFile" value="framework-jgroup-tcp.xml" />
+			</properties>
+		</transport>
+	</global>
+
+	<default>
+		<jmxStatistics enabled="false" />
+		<clustering mode="dist">
+			<sync replTimeout="300000" />
+			<hash numOwners="1" numSegments="90" />
+			<stateTransfer fetchInMemoryState="false" awaitInitialTransfer="false"/>
+		</clustering>
+	</default>
+
+	<namedCache name="main">
+		<jmxStatistics enabled="true" />
+		<clustering mode="dist">
+			<sync replTimeout="3600000" />
+			<hash numOwners="1" numSegments="90" />
+			<stateTransfer fetchInMemoryState="true" chunkSize="10000" timeout="1800000" awaitInitialTransfer="true" />
+		</clustering>
+	</namedCache>
+
+	<namedCache name="map-reduce">
+		<jmxStatistics enabled="true" />
+		<clustering mode="dist">
+			<sync replTimeout="3600000" />
+			<hash numOwners="1" numSegments="90" />
+			<stateTransfer fetchInMemoryState="true" chunkSize="10000" timeout="1800000" awaitInitialTransfer="true" />
+		</clustering>
+	</namedCache>
+
+
+	<namedCache name="status">
+		<transaction transactionMode="TRANSACTIONAL" lockingMode="PESSIMISTIC" />
+		<jmxStatistics enabled="true" />
+		<clustering mode="repl">
+			<sync replTimeout="3600000" />
+			<stateTransfer fetchInMemoryState="true" chunkSize="10000" timeout="1800000" awaitInitialTransfer="true" />
+		</clustering>
+	</namedCache>
+
+	<!-- MapReduce Intermadiate Cache Marking -->
+	<!-- このキャッシュは実際には利用されないが、この定義を実施することで、MapReduceの中間キャッシュ(シャッフル用キャッシュ)の
+	     定義をデフォルトキャッシュで定義可能となる -->
+	<namedCache name="__tmpMapReduce" />
+	
+	<namedCache name="__cluster_registry_cache__" >
+		<jmxStatistics enabled="true" />
+		<locking isolationLevel="READ_COMMITTED" lockAcquisitionTimeout="600000"/>
+	</namedCache>
+</infinispan>
