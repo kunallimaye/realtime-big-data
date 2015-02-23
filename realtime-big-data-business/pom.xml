@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>realtime-big-data-business</artifactId>
-	<packaging>ejb</packaging>
+	<packaging>war</packaging>
 
 	<dependencies>
 		<dependency>
@@ -38,8 +38,8 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>realtime-big-data-framework</artifactId>
 			<version>${project.version}</version>
-			<type>ejb</type>
-			<scope>compile</scope>
+			<classifier>classes</classifier>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- サードパーティ モジュール -->
