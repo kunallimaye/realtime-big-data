@@ -19,6 +19,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.ws.rs.Path;
 
 import org.infinispan.AdvancedCache;
 import org.infinispan.Cache;
