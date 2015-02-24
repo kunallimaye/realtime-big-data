@@ -29,7 +29,7 @@ public class TestLoader {
 	public static boolean help;
 	
 	@Option(name="-ipPort", usage="Ip:Port")
-	public static String ipPort = "10.64.193.144:8080";
+	public static String ipPort = "localhost:8080";
 
 	@Option(name="-f", usage="contents data file")
 	public static String fileName = "eap63manual.txt";
