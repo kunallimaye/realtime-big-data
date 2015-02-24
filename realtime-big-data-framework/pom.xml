@@ -20,6 +20,17 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.xml.ws</groupId>
+			<artifactId>jboss-jaxws-api_2.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- BRMS -->
 		<dependency>
@@ -45,15 +56,7 @@
 			<version>${jdg-version}</version>
 			<scope>compile</scope>
 		</dependency>
-
-		<!-- JEE -->
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>6.0</version>
-			<scope>provided</scope>
-		</dependency>
-
+		
 		<!-- logging -->
 		<dependency>
 			<groupId>org.jboss.logging</groupId>
@@ -76,5 +79,11 @@
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
 </project>
